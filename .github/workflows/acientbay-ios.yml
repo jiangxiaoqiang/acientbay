@@ -29,9 +29,8 @@ jobs:
           gem install fastlane -v 2.177.0
           bundle install
       - name: Install tools
-          run: |
-            flutter precache
-            flutter pub get
-            cd ./ios
-            pod install
-      
+        run: |
+          flutter precache
+          flutter pub get
+          cd ./ios
+          pod install
