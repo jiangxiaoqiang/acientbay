@@ -36,4 +36,24 @@ jobs:
           pod repo update
           pod install
       - run: flutter build ios --release --no-codesign --no-sound-null-safety
+      - name: Deploy to TestFlight/PGY
+        run: |
+          cd ./ios
+          bundle exec fastlane beta
+        env:
+          FLUTTER_ROOT: ${{ secrets.FLUTTER_ROOT }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          GIT_URL: ${{ secrets.GIT_URL }}
+          PGY_USER_KEY: ${{ secrets.PGY_USER_KEY }}
+          PGY_API_KEY: ${{ secrets.PGY_API_KEY }}
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+          ITC_TEAM_ID: ${{ secrets.ITC_TEAM_ID }}
+          FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_KEYCHAIN_NAME: ${{ secrets.MATCH_KEYCHAIN_NAME }}
+          MATCH_KEYCHAIN_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
+          DELIVER_ITMSTRANSPORTER_ADDITIONAL_UPLOAD_PARAMETERS: ${{ secrets.DELIVER_ITMSTRANSPORTER_ADDITIONAL_UPLOAD_PARAMETERS }}
 
