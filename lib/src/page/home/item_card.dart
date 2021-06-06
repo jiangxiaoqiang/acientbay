@@ -3,7 +3,7 @@ import 'package:flutter_html/flutter_html.dart';
 
 class ItemCard extends StatelessWidget {
   const ItemCard({
-     Key key,
+     Key? key,
   }) : super(key: key);
 
 

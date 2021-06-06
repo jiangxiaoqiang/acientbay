@@ -25,8 +25,8 @@ class HomeDetail extends HookWidget {
           ));
     }
 
-    Offset _initialSwipeOffset;
-    Offset _finalSwipeOffset;
+    Offset? _initialSwipeOffset;
+    Offset? _finalSwipeOffset;
 
     void _onHorizontalDragStart(DragStartDetails details) {
       _initialSwipeOffset = details.globalPosition;
@@ -38,7 +38,7 @@ class HomeDetail extends HookWidget {
 
     void _onHorizontalDragEnd(DragEndDetails details) {
       if (_initialSwipeOffset != null) {
-        final offsetDifference = _initialSwipeOffset.dx - _finalSwipeOffset.dx;
+        final offsetDifference = _initialSwipeOffset!.dx - _finalSwipeOffset!.dx;
         if (offsetDifference < 0) {
           Navigator.pop(context);
         }
