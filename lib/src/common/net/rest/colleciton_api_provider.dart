@@ -3,13 +3,16 @@ import 'dart:collection';
 
 import 'package:acientbay/src/models/api/request/collection_request.dart';
 import 'package:acientbay/src/models/collection.dart';
+import 'package:global_configuration/global_configuration.dart';
 import 'package:wheel/wheel.dart';
 
 class CollectionApiProvider{
 
-  Future<List<Collection>> fetchMovieList(CollectionRequest request) async {
+  Future<List<Collection>> fetchCollectionList(CollectionRequest request) async {
+
     String url = "/acientbay/collection/page";
     Map jsonMap = request.toMap();
+    var lib =  GlobalConfiguration().get("baseUrl");
     final response = await RestClient.postHttp(url, jsonMap);
     if (RestClient.respSuccess(response)) {
       Map result = response.data["result"];

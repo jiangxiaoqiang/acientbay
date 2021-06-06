@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:acientbay/src/models/collection.dart';
 import 'package:acientbay/src/models/password.dart';
 import 'package:acientbay/src/models/username.dart';
 import 'package:acientbay/src/repo/authentication_repository.dart';
@@ -14,7 +15,7 @@ class CollectionBloc extends Bloc<CollectionEvent, CollectionState> {
   CollectionBloc({
     required AuthenticationRepository authenticationRepository,
   })  : _authenticationRepository = authenticationRepository,
-        super(const CollectionState());
+        super(CollectionState());
 
   final AuthenticationRepository _authenticationRepository;
 
@@ -28,8 +29,8 @@ class CollectionBloc extends Bloc<CollectionEvent, CollectionState> {
       yield _mapPasswordChangedToState(event, state);
     } else if (event is LoginSubmitted) {
       yield* _mapLoginSubmittedToState(event, state);
-    } else if(event is NavSelectIndexChanged){
-      yield _mapNavSelectIndexChangedToState(event, state);
+    } else if(event is FetchCollection){
+      yield _mapFetchCollectionChangedToState(event, state);
     }
   }
 
@@ -44,12 +45,12 @@ class CollectionBloc extends Bloc<CollectionEvent, CollectionState> {
     );
   }
 
-  CollectionState _mapNavSelectIndexChangedToState(
-      NavSelectIndexChanged event,
+  CollectionState _mapFetchCollectionChangedToState(
+      FetchCollection event,
       CollectionState state,
       ) {
     return state.copyWith(
-      selectNavIndex: event.selectIndex,
+      collections: event.collections,
     );
   }
 

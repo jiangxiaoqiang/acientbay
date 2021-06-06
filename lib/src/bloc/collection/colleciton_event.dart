@@ -7,13 +7,13 @@ abstract class CollectionEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class NavSelectIndexChanged extends CollectionEvent{
-  const NavSelectIndexChanged(this.selectIndex);
+class FetchCollection extends CollectionEvent{
+  const FetchCollection(this.collections);
 
-  final int selectIndex;
+  final List<Collection> collections;
 
   @override
-  List<Object> get props => [selectIndex];
+  List<Object> get props => [collections];
 }
 
 class LoginUsernameChanged extends CollectionEvent {

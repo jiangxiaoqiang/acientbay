@@ -28,6 +28,7 @@ dependencies:
   flutter_slidable: 0.6.0
   animations: 2.0.0
   equatable: 2.0.0
+  global_configuration: 2.0.0-nullsafety.1
   formz: ^0.4.0
   uuid: ^3.0.0
   wheel:
@@ -54,4 +55,6 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/cfg/
 

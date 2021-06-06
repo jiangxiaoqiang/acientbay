@@ -1,32 +1,33 @@
 part of 'collection_bloc.dart';
 
 class CollectionState extends Equatable {
-  const CollectionState({
+   CollectionState({
     this.status = FormzStatus.pure,
     this.username = const Username.pure(),
     this.password = const Password.pure(),
-    this.selectNavIndex = 1
+     this.collections,
   });
 
   final FormzStatus status;
   final Username username;
   final Password password;
-  final int selectNavIndex;
+  final List<Collection>? collections;
 
   CollectionState copyWith({
     FormzStatus? status,
     Username? username,
     Password? password,
-    int? selectNavIndex
+    int? selectNavIndex,
+    List<Collection>? collections
   }) {
     return CollectionState(
       status: status ?? this.status,
       username: username ?? this.username,
       password: password ?? this.password,
-      selectNavIndex: selectNavIndex??this.selectNavIndex
+        collections: collections??this.collections
     );
   }
 
   @override
-  List<Object> get props => [status, username, password, selectNavIndex];
+  List<Object> get props => [status, username, password];
 }
