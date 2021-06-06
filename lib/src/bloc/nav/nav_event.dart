@@ -7,6 +7,15 @@ abstract class NavEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class NavSelectIndexChanged extends NavEvent{
+  const NavSelectIndexChanged(this.selectIndex);
+
+  final int selectIndex;
+
+  @override
+  List<Object> get props => [selectIndex];
+}
+
 class LoginUsernameChanged extends NavEvent {
   const LoginUsernameChanged(this.username);
 

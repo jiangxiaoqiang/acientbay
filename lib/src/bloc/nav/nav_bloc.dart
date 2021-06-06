@@ -10,16 +10,16 @@ import 'package:formz/formz.dart';
 part 'nav_event.dart';
 part 'nav_state.dart';
 
-class NavBloc extends Bloc<NavEvent, LoginState> {
+class NavBloc extends Bloc<NavEvent, NavState> {
   NavBloc({
     required AuthenticationRepository authenticationRepository,
   })  : _authenticationRepository = authenticationRepository,
-        super(const LoginState());
+        super(const NavState());
 
   final AuthenticationRepository _authenticationRepository;
 
   @override
-  Stream<LoginState> mapEventToState(
+  Stream<NavState> mapEventToState(
       NavEvent event,
       ) async* {
     if (event is LoginUsernameChanged) {
@@ -28,12 +28,14 @@ class NavBloc extends Bloc<NavEvent, LoginState> {
       yield _mapPasswordChangedToState(event, state);
     } else if (event is LoginSubmitted) {
       yield* _mapLoginSubmittedToState(event, state);
+    } else if(event is NavSelectIndexChanged){
+      yield _mapNavSelectIndexChangedToState(event, state);
     }
   }
 
-  LoginState _mapUsernameChangedToState(
+  NavState _mapUsernameChangedToState(
       LoginUsernameChanged event,
-      LoginState state,
+      NavState state,
       ) {
     final username = Username.dirty(event.username);
     return state.copyWith(
@@ -42,9 +44,18 @@ class NavBloc extends Bloc<NavEvent, LoginState> {
     );
   }
 
-  LoginState _mapPasswordChangedToState(
+  NavState _mapNavSelectIndexChangedToState(
+      NavSelectIndexChanged event,
+      NavState state,
+      ) {
+    return state.copyWith(
+      selectNavIndex: event.selectIndex,
+    );
+  }
+
+  NavState _mapPasswordChangedToState(
       LoginPasswordChanged event,
-      LoginState state,
+      NavState state,
       ) {
     final password = Password.dirty(event.password);
     return state.copyWith(
@@ -53,9 +64,9 @@ class NavBloc extends Bloc<NavEvent, LoginState> {
     );
   }
 
-  Stream<LoginState> _mapLoginSubmittedToState(
+  Stream<NavState> _mapLoginSubmittedToState(
       LoginSubmitted event,
-      LoginState state,
+      NavState state,
       ) async* {
     if (state.status.isValidated) {
       yield state.copyWith(status: FormzStatus.submissionInProgress);
