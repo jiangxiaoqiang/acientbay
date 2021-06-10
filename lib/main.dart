@@ -6,7 +6,11 @@ import 'package:wheel/wheel.dart' show CommonUtils;
 
 void main() {
   GlobalConfiguration().loadFromAsset("app_settings");
-  CommonUtils.initialApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  // Initialize Firebase, collection app crash report
+  // https://firebase.flutter.dev/docs/crashlytics/usage/
+
+
 
   runApp(AcientbayApp());
 }

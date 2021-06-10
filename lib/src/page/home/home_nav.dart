@@ -9,14 +9,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:global_configuration/global_configuration.dart';
 
 class HomeNav extends HookWidget {
   @override
   Widget build(BuildContext context) {
     Future<void> _onItemTapped(int index) async {
+      print(GlobalConfiguration().getValue("baseUrl"));
       context.read<NavBloc>().add(NavSelectIndexChanged(index));
         var co = CollectionRepository();
         CollectionRequest request = CollectionRequest(-1,"",-1);
+        request.collectionName ="ddd";
+        //GlobalConfig
+        //storage.set(key: "token")
         List<Collection> deg= await co.fetchMovieList(request);
         context.read<CollectionBloc>().add(FetchCollection(deg));
     }
