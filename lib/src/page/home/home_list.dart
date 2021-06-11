@@ -39,7 +39,7 @@ class HomeList extends HookWidget {
               closedElevation: 0,
               transitionDuration: Duration(milliseconds: 500),
                 closedBuilder: (BuildContext c, VoidCallback action) =>
-                      ItemCard()
+                      ItemCard(collection:collections[index])
                 ,
               openBuilder: (BuildContext c, VoidCallback action) =>
                   HomeDetail(),

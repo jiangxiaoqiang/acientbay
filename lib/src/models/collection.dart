@@ -14,10 +14,10 @@ class Collection {
   @override
   List<Object> get props => [id];
 
-  //static const empty = Collection(-1,'-',-1);
-
   factory Collection.fromMap(Map<String, dynamic> json) => Collection(
-      id:json["1"], collectionName:json[""], collectionType: json["d"]
+      id:json["id"],
+      collectionName:json["collectionName"] == null ? 0 : json["collectionName"],
+      collectionType: json["collectionType"] == null ? 0 : json["collectionType"]
   );
 
 }

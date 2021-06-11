@@ -1,4 +1,5 @@
 
+import 'package:acientbay/src/bloc/collection/collection_bloc.dart';
 import 'package:acientbay/src/bloc/nav/nav_bloc.dart';
 import 'package:acientbay/src/page/home/home_nav.dart';
 import 'package:acientbay/src/repo/authentication_repository.dart';
@@ -15,7 +16,11 @@ class AcientbayApp extends HookWidget{
   Widget build(BuildContext context) {
    return MaterialApp(
      title: "Acientbay",
-     home: BlocProvider(create:(_) => NavBloc(authenticationRepository: repository), child: HomeNav()),
+     home: BlocProvider(
+         create:(_) => NavBloc(authenticationRepository: repository),
+         child: BlocProvider(
+             create:(_) => CollectionBloc(authenticationRepository: repository),
+             child:HomeNav())),
    );
   }
 }

@@ -3,8 +3,7 @@ import 'dart:collection';
 
 import 'package:acientbay/src/models/api/request/collection_request.dart';
 import 'package:acientbay/src/models/collection.dart';
-import 'package:global_configuration/global_configuration.dart';
-import 'package:wheel/wheel.dart' show GlobalConfig, RestClient;
+import 'package:wheel/wheel.dart' show GlobalConfig, RestClient, SecureStorageUtil;
 
 
 class CollectionApiProvider{
@@ -16,7 +15,7 @@ class CollectionApiProvider{
     //var lib =  GlobalConfiguration().get("baseUrl");
     String baseUrl = "https://acientbay-api.poemhub.top";
     String requestUrl = baseUrl + url;
-
+    SecureStorageUtil.putString("token", "1");
     final response = await RestClient.postHttp(requestUrl, jsonMap);
     if (RestClient.respSuccess(response)) {
       Map result = response.data["result"];
