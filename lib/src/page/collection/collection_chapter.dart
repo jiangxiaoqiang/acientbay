@@ -37,7 +37,31 @@ class CollectionChapter extends HookWidget {
       return Center(child: CircularProgressIndicator());
     }
 
-    return SafeArea(
+    Offset? _initialSwipeOffset;
+    Offset? _finalSwipeOffset;
+
+    void _onHorizontalDragStart(DragStartDetails details) {
+      _initialSwipeOffset = details.globalPosition;
+    }
+
+    void _onHorizontalDragUpdate(DragUpdateDetails details) {
+      _finalSwipeOffset = details.globalPosition;
+    }
+
+    void _onHorizontalDragEnd(DragEndDetails details) {
+      if (_initialSwipeOffset != null) {
+        final offsetDifference = _initialSwipeOffset!.dx - _finalSwipeOffset!.dx;
+        if (offsetDifference < 0) {
+          Navigator.pop(context);
+        }
+      }
+    }
+
+    return GestureDetector(
+        onHorizontalDragStart: _onHorizontalDragStart,
+        onHorizontalDragUpdate: _onHorizontalDragUpdate,
+        onHorizontalDragEnd: _onHorizontalDragEnd,
+        child:SafeArea(
         child: CustomScrollView(slivers: <Widget>[
       SliverList(
           delegate: SliverChildBuilderDelegate((context, index) {
@@ -49,10 +73,10 @@ class CollectionChapter extends HookWidget {
             closedElevation: 0,
             transitionDuration: Duration(milliseconds: 500),
             closedBuilder: (BuildContext c, VoidCallback action) => ItemCard(name: collections[index].storeTitle),
-            openBuilder: (BuildContext c, VoidCallback action) => HomeDetail(storeContent: collections[index].storeContent,),
+            openBuilder: (BuildContext c, VoidCallback action) => ChapterDetail(storeContent: collections[index].storeContent,),
           ),
         );
       }, childCount: collections.length))
-    ]));
+    ])));
   }
 }

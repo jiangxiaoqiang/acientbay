@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_html/flutter_html.dart';
 
-class HomeDetail extends HookWidget {
-  const HomeDetail({Key? key, required this.storeContent}) : super(key: key);
+class ChapterDetail extends HookWidget {
+  const ChapterDetail({Key? key, required this.storeContent}) : super(key: key);
 
   final String storeContent;
 
@@ -48,7 +48,7 @@ class HomeDetail extends HookWidget {
         onHorizontalDragStart: _onHorizontalDragStart,
         onHorizontalDragUpdate: _onHorizontalDragUpdate,
         onHorizontalDragEnd: _onHorizontalDragEnd,
-        child: Container(
+        child:SafeArea(child: Container(
           constraints: BoxConstraints(
             minHeight: MediaQuery.of(context).size.height * 0.9,
           ),
@@ -57,6 +57,6 @@ class HomeDetail extends HookWidget {
             padding: const EdgeInsets.all(16.0),
             child: buildListView(context),
           ),
-        ));
+        )));
   }
 }

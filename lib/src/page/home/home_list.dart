@@ -25,7 +25,8 @@ class HomeList extends HookWidget {
 
     AuthenticationRepository repository =  AuthenticationRepository();
 
-    return SafeArea(child: CustomScrollView(
+    return SafeArea(
+        child: CustomScrollView(
         slivers: <Widget>[ SliverList(
         delegate: SliverChildBuilderDelegate((context, index){
           return Slidable(
