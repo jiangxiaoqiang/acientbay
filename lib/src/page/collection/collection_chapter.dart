@@ -48,8 +48,8 @@ class CollectionChapter extends HookWidget {
             tappable: true,
             closedElevation: 0,
             transitionDuration: Duration(milliseconds: 500),
-            closedBuilder: (BuildContext c, VoidCallback action) => ItemCard(name: collections[index].collectionName),
-            openBuilder: (BuildContext c, VoidCallback action) => HomeDetail(),
+            closedBuilder: (BuildContext c, VoidCallback action) => ItemCard(name: collections[index].storeTitle),
+            openBuilder: (BuildContext c, VoidCallback action) => HomeDetail(storeContent: collections[index].storeContent,),
           ),
         );
       }, childCount: collections.length))

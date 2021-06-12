@@ -1,28 +1,27 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 class HomeDetail extends HookWidget {
+  const HomeDetail({Key? key, required this.storeContent}) : super(key: key);
 
+  final String storeContent;
 
   @override
   Widget build(BuildContext context) {
     SingleChildScrollView buildListView(BuildContext context) {
       return SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Html(
-                  data: "item.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.contentitem.content",
-                  style: {
-                    "body": Style(
-                      fontSize: FontSize(19.0),
-                    ),
-                  }),
-            ],
-          ));
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Html(data: storeContent, style: {
+            "body": Style(
+              fontSize: FontSize(19.0),
+            ),
+          }),
+        ],
+      ));
     }
 
     Offset? _initialSwipeOffset;
@@ -45,21 +44,15 @@ class HomeDetail extends HookWidget {
       }
     }
 
-
     return GestureDetector(
         onHorizontalDragStart: _onHorizontalDragStart,
         onHorizontalDragUpdate: _onHorizontalDragUpdate,
         onHorizontalDragEnd: _onHorizontalDragEnd,
         child: Container(
           constraints: BoxConstraints(
-            minHeight: MediaQuery
-                .of(context)
-                .size
-                .height * 0.9,
+            minHeight: MediaQuery.of(context).size.height * 0.9,
           ),
-          color: Theme
-              .of(context)
-              .scaffoldBackgroundColor,
+          color: Theme.of(context).scaffoldBackgroundColor,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: buildListView(context),
@@ -67,5 +60,3 @@ class HomeDetail extends HookWidget {
         ));
   }
 }
-
-
