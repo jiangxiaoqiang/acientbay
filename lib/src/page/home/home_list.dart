@@ -42,7 +42,7 @@ class HomeList extends HookWidget {
               openBuilder: (BuildContext c, VoidCallback action) =>
                   BlocProvider(
                       create:(_) => CollectionStoreBloc(authenticationRepository: repository),
-                      child:CollectionChapter())),
+                      child:CollectionChapter(collectionId: collections[index].id,))),
           );
         },
           childCount: collections.length

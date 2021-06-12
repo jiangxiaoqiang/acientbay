@@ -3,7 +3,6 @@ import 'package:acientbay/src/bloc/nav/nav_bloc.dart';
 import 'package:acientbay/src/models/api/request/collection_request.dart';
 import 'package:acientbay/src/models/collection.dart';
 import 'package:acientbay/src/page/home/home_list.dart';
-import 'package:acientbay/src/repo/authentication_repository.dart';
 import 'package:acientbay/src/repo/collection_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

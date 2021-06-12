@@ -2,19 +2,19 @@ part of 'collection_store_bloc.dart';
 
 class CollectionStoreState extends Equatable {
   CollectionStoreState({
-     this.collections,
+     this.collectionStores,
   });
 
-  final List<CollectionStore>? collections;
+  final List<CollectionStore>? collectionStores;
 
   CollectionStoreState copyWith({
     List<CollectionStore>? collections
   }) {
     return CollectionStoreState(
-        collections: collections??this.collections
+        collectionStores: collections??this.collectionStores
     );
   }
 
   @override
-  List<Object> get props => [collections??[]];
+  List<Object> get props => [collectionStores??[]];
 }

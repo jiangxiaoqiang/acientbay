@@ -31,7 +31,7 @@ class CollectionStoreBloc extends Bloc<CollectionStoreEvent, CollectionStoreStat
       CollectionStoreState state,
       ) {
     return state.copyWith(
-      collections: event.collections,
+      collections: event.collectionStores,
     );
   }
 }

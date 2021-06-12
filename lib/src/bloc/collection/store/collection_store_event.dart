@@ -8,12 +8,12 @@ abstract class CollectionStoreEvent extends Equatable {
 }
 
 class CollectionStoreValueChanged extends CollectionStoreEvent{
-  const CollectionStoreValueChanged(this.collections);
+  const CollectionStoreValueChanged(this.collectionStores);
 
-  final List<CollectionStore> collections;
+  final List<CollectionStore> collectionStores;
 
   @override
-  List<Object> get props => [collections];
+  List<Object> get props => [collectionStores];
 }
 
 

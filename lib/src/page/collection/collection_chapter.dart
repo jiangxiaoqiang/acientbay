@@ -13,17 +13,26 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:wheel/wheel.dart';
 
 class CollectionChapter extends HookWidget {
+
+  const CollectionChapter({
+    Key? key,
+    required this.collectionId
+  }) : super(key: key);
+
+
+  final int collectionId;
+
   @override
   Widget build(BuildContext context) {
     final collections = context.select(
-      (CollectionStoreBloc bloc) => bloc.state.collections,
+      (CollectionStoreBloc bloc) => bloc.state.collectionStores,
     );
 
     loadCollectionStore() async {
       var collectionStore = CollectionStoreRepository();
       CollectionRequest request = CollectionRequest(-1, "", -1);
       request.collectionName = "demo";
-      request.id = 1;
+      request.id = collectionId;
       SecureStorageUtil.putString("token", "1");
       List<CollectionStore> deg = await collectionStore.fetchMovieList(request);
       context.read<CollectionStoreBloc>().add(CollectionStoreValueChanged(deg));
