@@ -7,7 +7,7 @@ class CollectionRequest extends Equatable {
       this.collectionType
       );
 
-  final int id;
+   int id;
   String collectionName;
   final int collectionType;
 
@@ -16,7 +16,8 @@ class CollectionRequest extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
-      'collectionName': this.collectionName
+      'collectionName': this.collectionName,
+      'id':this.id
     };
   }
 

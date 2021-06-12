@@ -1,14 +1,13 @@
-import 'package:acientbay/src/models/collection.dart';
 import 'package:flutter/material.dart';
 
 class ItemCard extends StatelessWidget {
   const ItemCard({
      Key? key,
-     required this.collection
+     required this.name
   }) : super(key: key);
 
 
-  final Collection collection;
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class ItemCard extends StatelessWidget {
             children: [
 
               Text(
-                collection.collectionName,
+                name,
               ),
               Row(
                 children: [

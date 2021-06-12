@@ -22,8 +22,6 @@ class HomeNav extends HookWidget {
         context.read<CollectionBloc>().add(CollectionValueChanged(deg));
     }
 
-    AuthenticationRepository repository =  AuthenticationRepository();
-
     final selectNavIndex = context.select(
       (NavBloc bloc) => bloc.state.selectNavIndex,
     );
