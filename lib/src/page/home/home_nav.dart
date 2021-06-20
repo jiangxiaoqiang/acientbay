@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import 'home_tab.dart';
+
 class HomeNav extends HookWidget {
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class HomeNav extends HookWidget {
     );
 
     return Scaffold(
-      body:  HomeList(),
+      body:  HomeTab(),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: '作品库'),
