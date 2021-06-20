@@ -25,7 +25,26 @@ class HomeList extends HookWidget {
 
     AuthenticationRepository repository =  AuthenticationRepository();
 
-    return SafeArea(
+    return DefaultTabController(
+    length: 3,
+        child:Scaffold(
+      appBar: AppBar(
+        title: Text("Acientbay"),
+        bottom: TabBar(
+          tabs: <Widget>[
+            Tab(
+              text: "Novel",
+            ),
+            Tab(
+              text: "发现",
+            ),
+            Tab(
+              text: "关于",
+            )
+          ],
+        ),
+      ),
+        body:SafeArea(
         child: CustomScrollView(
         slivers: <Widget>[ SliverList(
         delegate: SliverChildBuilderDelegate((context, index){
@@ -46,7 +65,7 @@ class HomeList extends HookWidget {
           );
         },
           childCount: collections.length
-    ))]));
+    ))]))));
   }
 }
 

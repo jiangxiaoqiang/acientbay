@@ -11,10 +11,8 @@ part 'colleciton_state.dart';
 class CollectionBloc extends Bloc<CollectionEvent, CollectionState> {
   CollectionBloc({
     required AuthenticationRepository authenticationRepository,
-  })  : _authenticationRepository = authenticationRepository,
+  })  :
         super(CollectionState());
-
-  final AuthenticationRepository _authenticationRepository;
 
   @override
   Stream<CollectionState> mapEventToState(
